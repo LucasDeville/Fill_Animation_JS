@@ -1,0 +1,16 @@
+.container {
+	text-align: center;
+	height: 50%;
+    border: 1px black solid;
+}
+
+
+#jar {
+	/* height: auto;
+	width: auto; */
+    display: inline-block;
+}
+
+h1 {
+	text-align: center;
+}
