@@ -1,5 +1,5 @@
 var bocal = new Image();
-var arrayLiquide = new Array(5).fill(0);
+var arrayLiquide = new Array(3).fill(0);
 var color = ["rgba(0, 0, 255, 0)", "rgba(0, 0, 255, 0.5)",
             "rgba(255, 0, 0, 0)", "rgba(255, 0, 0, 0.5)",
             "rgba(0, 255, 0, 0)", "rgba(0, 255, 0, 0.5)"];
@@ -43,6 +43,7 @@ function draw(ctx) {
     }
   }
   displayTotal()
+  changeMax()
 }
 
 function displayLiquide(ctx, i) {
@@ -63,6 +64,12 @@ function displayLiquide(ctx, i) {
 function liquide(value, i) {
 
   if (!isNaN(value)) {
+    var nbr = (parseInt(total, 10) - parseInt(arrayLiquide[i], 10) + parseInt(value, 10));
+    if (nbr > 100) {
+      console.log(nbr);
+      this.value = arrayLiquide[i];
+      return;
+    }
     arrayLiquide[i] = value;
   }
 
@@ -74,7 +81,6 @@ function liquide(value, i) {
 function displayMessage(text) {
 
   var container = document.getElementById("messageContainer");
-
   var paragraphe = document.createElement("p");
   var texteMessage = document.createTextNode(text);
   paragraphe.appendChild(texteMessage);
@@ -83,7 +89,6 @@ function displayMessage(text) {
 }
 
 function displayTotal() {
-
 
   if (totalReference && totalReference.parentNode)
         totalReference.parentNode.removeChild(totalReference);
@@ -96,9 +101,17 @@ function displayTotal() {
   totalReference  = paragraphe;
 }
 
-// window.onload = function() {
-//   // Cette fonction sera appelée lorsque la page est chargée
-//   alert("La page est chargée !");
-// };
+function changeMax() {
+
+  for (var i = 0; i < arrayLiquide.length; i++) {
+    var liquideElement = document.getElementById("liquide" + i);
+    
+    if (liquideElement) {
+      var value = parseInt(liquideElement.value, 10);
+      var pourcentage = Math.min(value + (100 - total), 100);
+      liquideElement.style.background = 'linear-gradient(to right, rgba(128, 128, 128, 0.5) ' + pourcentage + '%, rgba(255, 0, 0, 0.5) ' + pourcentage + '%, rgba(255, 0, 0, 0.5) 100%, rgba(128, 128, 128, 0.5) 100%, transparent 60%, transparent 100%)';
+    }
+  }
+}
 
 init();

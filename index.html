@@ -17,9 +17,9 @@
 	<br /><br />Liquide 2 : <input type="number" onkeyup="liquide(this.value, 1)" onclick="liquide(this.value, 1)"/>
 	<br /><br />Liquide 3 : <input type="number" onkeyup="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/> -->
 	
-	Liquide 1 : <input type="range" min="0" max="100" value="0" oninput="liquide(this.value, 0)" onclick="liquide(this.value, 0)"/>
-	<br /><br />Liquide 2 : <input type="range" min="0" max="100" value="0" oninput="liquide(this.value, 1)" onclick="liquide(this.value, 1)"/>
-	<br /><br />Liquide 3 : <input type="range" min="0" max="100" value="0" oninput="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/>
+	Liquide 1 : <input type="range" min="0" max="100" value="0" id="liquide0" autocomplete="off" oninput="liquide(this.value, 0)" onclick="liquide(this.value, 0)"/><div id="pourcent0" class="pourcentLiquid"></div>
+	<br /><br />Liquide 2 : <input type="range" min="0" max="100" id="liquide1" value="0" autocomplete="off" oninput="liquide(this.value, 1)" onclick="liquide(this.value, 1)"/><div id="pourcent1" class="pourcentLiquid"></div>
+	<br /><br />Liquide 3 : <input type="range" min="0" max="100" id="liquide2" value="0" autocomplete="off" oninput="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/><div id="pourcent2" class="pourcentLiquid"></div>
 
 	
 	<div id="totalContainer" class="totalContainer"></div>
