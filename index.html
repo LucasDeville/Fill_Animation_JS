@@ -13,9 +13,15 @@
 	<canvas id="jar"></canvas>
 	<div class="liquide">
 	<div id="messageContainer" class="messageContainer"></div>
-	Liquide 1 : <input type="number" onkeyup="liquide(this.value, 0)" onclick="liquide(this.value, 0)"/>
+	<!-- Liquide 1 : <input type="number" onkeyup="liquide(this.value, 0)" onclick="liquide(this.value, 0)"/>
 	<br /><br />Liquide 2 : <input type="number" onkeyup="liquide(this.value, 1)" onclick="liquide(this.value, 1)"/>
-	<br /><br />Liquide 3 : <input type="number" onkeyup="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/>
+	<br /><br />Liquide 3 : <input type="number" onkeyup="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/> -->
+	
+	Liquide 1 : <input type="range" min="0" max="100" value="0" oninput="liquide(this.value, 0)" onclick="liquide(this.value, 0)"/>
+	<br /><br />Liquide 2 : <input type="range" min="0" max="100" value="0" oninput="liquide(this.value, 1)" onclick="liquide(this.value, 1)"/>
+	<br /><br />Liquide 3 : <input type="range" min="0" max="100" value="0" oninput="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/>
+
+	
 	<div id="totalContainer" class="totalContainer"></div>
 	</div>
 </div>
