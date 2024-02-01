@@ -1,5 +1,8 @@
 var bocal = new Image();
 var arrayLiquide = new Array(5).fill(0);
+var color = ["rgba(0, 0, 255, 0)", "rgba(0, 0, 255, 0.5)",
+            "rgba(255, 0, 0, 0)", "rgba(255, 0, 0, 0.5)",
+            "rgba(0, 255, 0, 0)", "rgba(0, 255, 0, 0.5)"];
 var total = 0;
 
 function init() {
@@ -17,47 +20,39 @@ function init() {
 }
 
 function draw(ctx) {
-  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);  // Effacer le canvas
+  ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
   ctx.drawImage(bocal, 0, 0, bocal.width, bocal.height);
 
+  total = parseInt(0, 10);
   for (var i = 0; i < arrayLiquide.length; i++) {
     if (arrayLiquide[i] > 0) {
       displayLiquide(ctx, i);
+      total = parseInt(total, 10) + parseInt(arrayLiquide[i], 10);
     }
   }
-
-  window.requestAnimationFrame(function() {
-    draw(ctx);
-  });
 }
 
 function displayLiquide(ctx, i) {
   var canvas = document.getElementById("jar");
   var grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
 
-  grad.addColorStop(0, "rgba(0, 0, 255, 0)");
-  grad.addColorStop(1, "rgba(0, 0, 255, 0.5)");
+  grad.addColorStop(0, color[i * 2]);
+  grad.addColorStop(1, color[i * 2 + 1]);
 
   ctx.fillStyle = grad;
 
-  // Mettre à jour la hauteur du rectangle en fonction de la quantité de liquide
-  var rectHeight = (canvas.height * arrayLiquide[i]) / total;
+  var rectHeight = (canvas.height / 100) * arrayLiquide[i];
+  var startY = (canvas.height / 100) * total;
 
-  ctx.fillRect(0, canvas.height - rectHeight, canvas.width, rectHeight);
+  ctx.fillRect(0, canvas.height - rectHeight - startY, canvas.width, rectHeight);
 }
 
-function liquide() {
-  var l1Value = parseInt(document.getElementById("l1").value);
+function liquide(value, i) {
 
-  if (!isNaN(l1Value)) {
-    arrayLiquide[0] = l1Value;
+  if (!isNaN(value)) {
+    arrayLiquide[i] = value;
   }
-
-  // Mettre à jour la variable 'total' avant d'appeler draw()
-  total = arrayLiquide.reduce(function(a, b) {
-    return a + b;
-  }, 0);
 
   window.requestAnimationFrame(function() {
     draw(document.getElementById("jar").getContext("2d"));
