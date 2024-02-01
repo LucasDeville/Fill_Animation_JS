@@ -42,8 +42,8 @@ function draw(ctx) {
       total = parseInt(total, 10) + parseInt(arrayLiquide[i], 10);
     }
   }
-  displayTotal()
-  changeMax()
+  displayTotal();
+  changeMax();
 }
 
 function displayLiquide(ctx, i) {
@@ -67,10 +67,13 @@ function liquide(value, i) {
     var nbr = (parseInt(total, 10) - parseInt(arrayLiquide[i], 10) + parseInt(value, 10));
     if (nbr > 100) {
       console.log(nbr);
-      this.value = arrayLiquide[i];
+
+      var elem = document.getElementById("liquide" + i);
+      elem.value =  parseInt(arrayLiquide[i], 10);
       return;
     }
     arrayLiquide[i] = value;
+    displayValue(i);
   }
 
   window.requestAnimationFrame(function() {
@@ -101,6 +104,14 @@ function displayTotal() {
   totalReference  = paragraphe;
 }
 
+function displayValue(i) {
+  var paragraphe = document.getElementById("pourcent" + i);
+  if (arrayLiquide[i] == 0)
+   paragraphe.textContent = "";
+  else
+   paragraphe.textContent = arrayLiquide[i] + "%";
+}
+
 function changeMax() {
 
   for (var i = 0; i < arrayLiquide.length; i++) {
@@ -113,5 +124,24 @@ function changeMax() {
     }
   }
 }
+
+function profile(a, b, c) {
+  arrayLiquide[0] = parseInt(a, 10);
+  arrayLiquide[1] = parseInt(b, 10);
+  arrayLiquide[2] = parseInt(c, 10);
+
+
+  for(var i = 0; i < arrayLiquide.length; i++) {
+
+    var elem = document.getElementById("liquide" + i);
+    elem.value =  parseInt(arrayLiquide[i], 10);
+    displayValue(i);
+  }
+
+  window.requestAnimationFrame(function() {
+    draw(document.getElementById("jar").getContext("2d"));
+  }); 
+}
+
 
 init();

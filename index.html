@@ -16,14 +16,17 @@
 	<!-- Liquide 1 : <input type="number" onkeyup="liquide(this.value, 0)" onclick="liquide(this.value, 0)"/>
 	<br /><br />Liquide 2 : <input type="number" onkeyup="liquide(this.value, 1)" onclick="liquide(this.value, 1)"/>
 	<br /><br />Liquide 3 : <input type="number" onkeyup="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/> -->
-	
-	Liquide 1 : <input type="range" min="0" max="100" value="0" id="liquide0" autocomplete="off" oninput="liquide(this.value, 0)" onclick="liquide(this.value, 0)"/><div id="pourcent0" class="pourcentLiquid"></div>
-	<br /><br />Liquide 2 : <input type="range" min="0" max="100" id="liquide1" value="0" autocomplete="off" oninput="liquide(this.value, 1)" onclick="liquide(this.value, 1)"/><div id="pourcent1" class="pourcentLiquid"></div>
-	<br /><br />Liquide 3 : <input type="range" min="0" max="100" id="liquide2" value="0" autocomplete="off" oninput="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/><div id="pourcent2" class="pourcentLiquid"></div>
-
-	
+	<div class="liquidSection">Liquide 1 : <input type="range" min="0" max="100" id="liquide0" value="0" autocomplete="off" oninput="liquide(this.value, 0)" onclick="liquide(this.value, 0)"/><p id="pourcent0"></p></div>
+	<div class="liquidSection">Liquide 2 : <input type="range" min="0" max="100" id="liquide1" value="0" autocomplete="off" oninput="liquide(this.value, 1)" onclick="liquide(this.value, 1)"/><p id="pourcent1"></p></div>
+	<div class="liquidSection">Liquide 3 : <input type="range" min="0" max="100" id="liquide2" value="0" autocomplete="off" oninput="liquide(this.value, 2)" onclick="liquide(this.value, 2)"/><p id="pourcent2"></p></div>
 	<div id="totalContainer" class="totalContainer"></div>
 	</div>
+	<div class="profil">
+		<input type="button" onclick="profile(25,25,50)" value="Profil 1"/>
+		<input type="button" onclick="profile(50,50,0)" value="Profil 2"/>
+		<input type="button" onclick="profile(40,20,40)" value="Profil 3"/>
+	</div>
 </div>
+
 
 </body>
